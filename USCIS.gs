@@ -1,11 +1,4 @@
-/**
- * Get USCIS Status
- * Version 0.1
- *
- * @return USCIS Case Status text
- * @customfunction
- */
-function getStatus(caseid, querytype) {
+function getStatus_(caseid, querytype) {
   var url = 'https://egov.uscis.gov/casestatus/mycasestatus.do';
   var formData = {
     'appReceiptNum': caseid,
@@ -37,7 +30,6 @@ function getStatus(caseid, querytype) {
   return output;
 }
 
-
 /**
  * Get USCIS Case status
  *
@@ -48,11 +40,10 @@ function getStatus(caseid, querytype) {
  */
 function USCIS(caseid) {
   if (caseid == null) {
-    // return if caseid is not provided
     return null;
   };
-  //var caseid = '';
   var querytype = 'CHECK STATUS';
-  casestatus = getStatus(caseid, querytype);
-  return casestatus;;
+  casestatus = getStatus_(caseid, querytype);
+//  Logger.log(casestatus);
+  return casestatus;
 }
